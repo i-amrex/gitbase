@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>  <title>Side Hustle Form</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="Style.css">
   </head>
 <body>
-  <h1>Side Hustle Form</h1>
-  <fieldset>
+  <h1 id="subheading">Side Hustle Form</h1>
+  <fieldset id="line">
 
 
-<form action="/submit.html" onsubmit="myFunction()">
+<form id="inside" onsubmit="myFunction()">
   Enter name: <input type="text" name="fname" required>
   <label for="email">Email</label>
                 <input type="email" name="email" id="email" required>
+                <br>
                
                 <label for="Number">Phone Number</label>
-                <input type="number" name="Phone Number" id="number" required>
+                <input type="number" name="Phone Number" id="phone" required>
                 
                 <label for="password">Password</label>
-                <input type="password" name="Password" id="Password" required>
+                <input type="password" name="Password" id="Psw" required>
                 <select>
                     <option value="Male"> Male</option>
                     <option value="Female"> Female</option>
@@ -25,6 +26,45 @@
   <input type="submit" value="Submit">
 </form>
 </fieldset>
+<script>
+  function validateForm() {
+    var fullname = document.forms["myForm"]["fname"].value;
+    var email = document.forms["myForm"]["email"].value;
+    var password = document.forms["myForm"]["psw"].value;
+    var phone = document.forms["myForm"]["phone"].value;
+
+    if (fullname == "" || email == "" || password == "" || phone == "") {
+      alert("Please fill out all required fields.");
+      return false;
+    }
+
+    // Validate email format
+    var emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+
+    // Validate password length
+    if (password.length < 4) {
+      alert("Password must be at least 4 characters long.");
+      return false;
+    }
+
+    // Validate phone number format
+    var phoneRegex = /^\d{11}$/;
+    if (!phoneRegex.test(phone)) {
+      alert("Please enter a valid 11-digit phone number.");
+      return false;
+    }
+    if (fullname != "" && emailRegex.test(email) && password.length >= 4 && phoneRegex.test(phone) && gender != "") {
+      alert("Submission successful!");
+      return true;
+      form.reset();
+    }
+  }
+  
+</script>
 
 <script>
 function myFunction() {
